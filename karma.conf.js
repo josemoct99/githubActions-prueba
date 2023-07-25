@@ -31,8 +31,9 @@ module.exports = function (config) {
       ChromeHeadlessCI: {
         base: 'ChromeHeadless',
         flags: ['--no-sandbox']
-      },
-      singleRun: false,
-      restartOnFileChange: true
-    });
+      }
+    },
+    singleRun: false,
+    restartOnFileChange: true
+  });
 };
