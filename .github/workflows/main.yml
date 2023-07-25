@@ -22,5 +22,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Set Up Environment Variables
+        run: |
+          echo "export const environment = { production: false, apiUrl: '$API_URL' };" > ./src/environments/environment.ts
+          echo "export const environment = { production: true, apiUrl: '$API_URL' };" > ./src/environments/environment.prod.ts
+        env:
+          API_URL: ${{ secrets.API_URL }}
+
+      - name: Mostrar valor de API_URL
+        run: echo "El valor de API_URL es ${{ secrets.API_URL }}"
+
       - name: Run tests
         run: npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
